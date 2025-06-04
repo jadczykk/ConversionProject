@@ -1,5 +1,8 @@
 # ConversionProject
 
+## Credentials
+Karol J 56007
+
 ## Overview
 ConversionProject is a Python-based tool for converting data between JSON, XML, and YAML formats. It supports reading and writing files in these formats, making it easy to transform data for various use cases.
 
