@@ -21,8 +21,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Python packages from script
-        run: |
-          python ./installResources.ps1
+        run: ./installResources.ps1
 
       - name: Build EXE with PyInstaller
         run: |
