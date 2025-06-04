@@ -3,7 +3,7 @@ name: Build and Upload EXE
 on:
   push:
     branches:
-      - master
+      - task7
   workflow_dispatch:
   schedule:
     - cron: '0 8 * * 1'
