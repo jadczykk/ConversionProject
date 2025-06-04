@@ -1,1 +1,6 @@
 .env
+*.json
+*.yaml
+*.xml
+
+__pycache__/
