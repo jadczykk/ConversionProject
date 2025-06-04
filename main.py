@@ -2,6 +2,8 @@ import sys
 import os
 from json_handler import load_json
 from json_handler import save_json
+from yaml_handler import load_yaml
+
 
 def parse_arguments():
     if len(sys.argv) != 3:
@@ -37,5 +39,10 @@ if __name__ == "__main__":
         print("Poprawnie wczytano dane JSON:")
         print(data)
     if output_ext == ".json":
+        data = load_json(input_file)
         save_json(data, output_file)
         print("Poprawnie zapisano dane JSON do pliku:", output_file)
+    if input_ext in (".yml", ".yaml"):
+        data = load_yaml(input_file)
+        print("Poprawnie wczytano dane YAML:")
+        print(data)
