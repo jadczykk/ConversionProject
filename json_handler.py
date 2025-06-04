@@ -11,3 +11,13 @@ def load_json(path):
     except Exception as e:
         print(f"Błąd podczas wczytywania pliku JSON '{path}': {e}")
         exit(1)
+
+
+def save_json(data, path):
+    try:
+        with open(path, 'w', encoding='utf-8') as file:
+            json.dump(data, file, indent=4, ensure_ascii=False)
+        print(f"Zapisano dane do pliku JSON: {path}")
+    except Exception as e:
+        print(f"Błąd podczas zapisu do pliku JSON '{path}': {e}")
+        exit(1)

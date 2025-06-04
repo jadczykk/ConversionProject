@@ -1,6 +1,7 @@
 import sys
 import os
 from json_handler import load_json
+from json_handler import save_json
 
 def parse_arguments():
     if len(sys.argv) != 3:
@@ -35,3 +36,6 @@ if __name__ == "__main__":
         data = load_json(input_file)
         print("Poprawnie wczytano dane JSON:")
         print(data)
+    if output_ext == ".json":
+        save_json(data, output_file)
+        print("Poprawnie zapisano dane JSON do pliku:", output_file)
