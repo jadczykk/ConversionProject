@@ -1,0 +1,35 @@
+name: Build and Upload EXE
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * 1'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Python packages from script
+        run: |
+          python ./installResources.ps1
+
+      - name: Build EXE with PyInstaller
+        run: |
+          pyinstaller --onefile main.py
+
+      - name: Upload built EXE
+        uses: actions/upload-artifact@v3
+        with:
+          name: konwerter-danych
+          path: dist/main.exe
