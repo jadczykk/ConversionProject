@@ -1,5 +1,6 @@
 import sys
 import os
+from json_handler import load_json
 
 def parse_arguments():
     if len(sys.argv) != 3:
@@ -30,3 +31,7 @@ if __name__ == "__main__":
     print("Plik wyjściowy:", output_file)
     print("Format wejściowy:", input_ext)
     print("Format wyjściowy:", output_ext)
+    if input_ext == ".json":
+        data = load_json(input_file)
+        print("Poprawnie wczytano dane JSON:")
+        print(data)
