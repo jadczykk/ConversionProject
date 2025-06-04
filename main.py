@@ -4,6 +4,8 @@ from json_handler import load_json
 from json_handler import save_json
 from yaml_handler import load_yaml
 from yaml_handler import save_yaml
+from xml_handler import load_xml
+
 
 
 def parse_arguments():
@@ -49,3 +51,8 @@ if __name__ == "__main__":
         print(data)
     if output_ext in (".yml", ".yaml"):
         save_yaml(data, output_file)
+    if input_ext == ".xml":
+        data = load_xml(input_file)
+        print("Poprawnie wczytano dane XML:")
+        print(data)
+
