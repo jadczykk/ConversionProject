@@ -17,7 +17,7 @@ ConversionProject is a Python-based tool for converting data between JSON, XML, 
     ```
 2. Install required Python packages:
     ```bash
-    pip install -r requirements.txt
+    ./installResources.ps1
     ```
 
 ## Usage
