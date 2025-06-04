@@ -5,6 +5,7 @@ from json_handler import save_json
 from yaml_handler import load_yaml
 from yaml_handler import save_yaml
 from xml_handler import load_xml
+from xml_handler import save_xml
 
 
 
@@ -41,18 +42,25 @@ if __name__ == "__main__":
         data = load_json(input_file)
         print("Poprawnie wczytano dane JSON:")
         print(data)
-    if output_ext == ".json":
-        data = load_json(input_file)
-        save_json(data, output_file)
-        print("Poprawnie zapisano dane JSON do pliku:", output_file)
-    if input_ext in (".yml", ".yaml"):
+    elif input_ext in (".yml", ".yaml"):
         data = load_yaml(input_file)
         print("Poprawnie wczytano dane YAML:")
         print(data)
-    if output_ext in (".yml", ".yaml"):
-        save_yaml(data, output_file)
-    if input_ext == ".xml":
+    elif input_ext == ".xml":
         data = load_xml(input_file)
         print("Poprawnie wczytano dane XML:")
-        print(data)
-
+        print(data)    
+    else:
+        print("Błąd: nieobsługiwany format wejściowy.")
+        exit(1)
+            
+    if output_ext == ".json":
+        save_json(data, output_file)
+        print("Poprawnie zapisano dane JSON do pliku:", output_file)
+    elif output_ext in (".yml", ".yaml"):
+        save_yaml(data, output_file)
+    elif output_ext == ".xml":
+        save_xml(data, output_file)
+    else:
+        print("Błąd: nieobsługiwany format wyjściowy.")
+        exit(1)

@@ -28,3 +28,38 @@ def load_xml(path):
     except Exception as e:
         print(f"Błąd podczas wczytywania pliku XML '{path}': {e}")
         exit(1)
+
+def dict_to_xml(tag, data):
+    element = ET.Element(tag)
+
+    for key, val in data.items():
+        if isinstance(val, dict):
+            child = dict_to_xml(key, val)
+            element.append(child)
+        elif isinstance(val, list):
+            for item in val:
+                child = dict_to_xml(key, item)
+                element.append(child)
+        elif key == 'text':
+            element.text = str(val)
+        else:
+            child = ET.Element(key)
+            child.text = str(val)
+            element.append(child)
+
+    return element
+
+def save_xml(data, path):
+    try:
+        if len(data) != 1:
+            raise ValueError("Dane do zapisania muszą mieć dokładnie jeden korzeń XML.")
+
+        root_tag = list(data.keys())[0]
+        root_element = dict_to_xml(root_tag, data[root_tag])
+
+        tree = ET.ElementTree(root_element)
+        tree.write(path, encoding='utf-8', xml_declaration=True)
+        print(f"Zapisano dane do pliku XML: {path}")
+    except Exception as e:
+        print(f"Błąd podczas zapisu do pliku XML '{path}': {e}")
+        exit(1)
