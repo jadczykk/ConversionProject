@@ -3,6 +3,7 @@ import os
 from json_handler import load_json
 from json_handler import save_json
 from yaml_handler import load_yaml
+from yaml_handler import save_yaml
 
 
 def parse_arguments():
@@ -46,3 +47,5 @@ if __name__ == "__main__":
         data = load_yaml(input_file)
         print("Poprawnie wczytano dane YAML:")
         print(data)
+    if output_ext in (".yml", ".yaml"):
+        save_yaml(data, output_file)

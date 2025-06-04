@@ -11,3 +11,13 @@ def load_yaml(path):
     except Exception as e:
         print(f"Błąd podczas wczytywania pliku YAML '{path}': {e}")
         exit(1)
+
+
+def save_yaml(data, path):
+    try:
+        with open(path, 'w', encoding='utf-8') as file:
+            yaml.dump(data, file, allow_unicode=True, default_flow_style=False)
+        print(f"Zapisano dane do pliku YAML: {path}")
+    except Exception as e:
+        print(f"Błąd podczas zapisu do pliku YAML '{path}': {e}")
+        exit(1)
